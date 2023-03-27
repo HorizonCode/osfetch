@@ -53,6 +53,7 @@ import os from 'os';
         }
         console.log(asciiLine + infoLine);
     }
+    console.log(ansiStyles.reset.open);
 })();
 
 function secondsHumanReadable(seconds: number): string {
