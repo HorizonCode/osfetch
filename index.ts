@@ -9,7 +9,7 @@ import os from 'os';
     const cpuInfo = await si.cpu();
     const gpuInfo = await si.graphics();
     const memInfo = await si.mem();
-    const diskInfo = await si.diskLayout();
+    const diskInfo = await si.fsSize();
 
     const logoAscii = getLogo("arch");
     const configLinesArray = config.lines;
