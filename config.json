@@ -6,8 +6,8 @@
         "{color:yellow} {color:bold}UP    {color:reset}: [uptime]",
         "{color:blue} {color:bold}CPU   {color:reset}: [cpu]",
         "{color:magenta} {color:bold}GPU   {color:reset}: [gpu:name]",
-        "{color:cyan} {color:bold}MEMORY:{color:reset} [mem:active]/[mem:total]",
-        "{color:white} {color:bold}DISK  :{color:reset} [disk:size]",
+        "{color:cyan} {color:bold}MEMORY{color:reset}: [mem:active]/[mem:total]",
+        "{color:white} {color:bold}DISK  {color:reset}: [disk:used]/[disk:size]",
         "[colorTest]"
     ]
 }
