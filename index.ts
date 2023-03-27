@@ -9,6 +9,8 @@ import os from 'os';
     const cpuInfo = await si.cpu();
     const gpuInfo = await si.graphics();
     const memInfo = await si.mem();
+    const diskInfo = await si.diskLayout();
+
     const logoAscii = getLogo("arch");
     const configLinesArray = config.lines;
     const maxLines = Math.max(logoAscii.length, configLinesArray.length);
@@ -22,15 +24,26 @@ import os from 'os';
             return match;
         });
         infoLine = infoLine.replace(/\[uptime\]/g, secondsHumanReadable(Math.floor(os.uptime())));
-        infoLine = infoLine.replace(/\[cpu\]/g, `${cpuInfo.manufacturer} ${cpuInfo.brand} (${cpuInfo.cores}) @ ${cpuInfo.speedMax}GHz`);
+        infoLine = infoLine.replace(/\[cpu\]/g, `${cpuInfo.manufacturer} ${cpuInfo.brand} (${cpuInfo.cores}) @ ${cpuInfo.speedMax.toFixed(3)}GHz`);
         infoLine = infoLine.replace(/\[mem:(.*?)\]/g, (match, field) => {
             if (field in memInfo) {
-                if(Number.isInteger(memInfo[field]))
+                if (Number.isInteger(memInfo[field]))
                     return formatBytes(memInfo[field], 2);
                 return memInfo[field];
             }
             return match;
         });
+        if (diskInfo.length > 0) {
+            const bootDisk = diskInfo[0];
+            infoLine = infoLine.replace(/\[disk:(.*?)\]/g, (match, field) => {
+                if (field in bootDisk) {
+                    if (Number.isInteger(bootDisk[field]))
+                        return formatBytes(bootDisk[field], 2);
+                    return bootDisk[field];
+                }
+                return match;
+            });
+        }
         if (gpuInfo.controllers.length > 0) {
             const firstGPU = gpuInfo.controllers[0];
             infoLine = infoLine.replace(/\[gpu:(.*?)\]/g, (match, field) => {
@@ -40,7 +53,7 @@ import os from 'os';
                 return match;
             });
         }
-        infoLine = infoLine.replace(/\[colorTest\]/g, `${ansiStyles.red.open}󰣐 ${ansiStyles.green.open}󰣐 ${ansiStyles.yellow.open}󰣐 ${ansiStyles.blue.open}󰣐 ${ansiStyles.redBright.open}󰣐 ${ansiStyles.cyan.open}󰣐 ${ansiStyles.white.open}󰣐 ${ansiStyles.grey.open}󰣐`);
+        infoLine = infoLine.replace(/\[colorTest\]/g, `${ansiStyles.red.open}󰣐 ${ansiStyles.green.open}󰣐 ${ansiStyles.yellow.open}󰣐 ${ansiStyles.blue.open}󰣐 ${ansiStyles.magenta.open}󰣐 ${ansiStyles.cyan.open}󰣐 ${ansiStyles.white.open}󰣐 ${ansiStyles.grey.open}󰣐`);
         infoLine = infoLine.replace(/\{color:(.*?)\}/g, (match, color) => {
             if (color in ansiStyles)
                 return ansiStyles[color].open;
