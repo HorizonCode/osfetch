@@ -25,6 +25,7 @@ import os from 'os';
         });
         infoLine = infoLine.replace(/\[uptime\]/g, secondsHumanReadable(Math.floor(os.uptime())));
         infoLine = infoLine.replace(/\[cpu\]/g, `${cpuInfo.manufacturer} ${cpuInfo.brand} (${cpuInfo.cores}) @ ${cpuInfo.speedMax.toFixed(3)}GHz`);
+        infoLine = infoLine.replace(/\[de\]/g, (process.env as object)["XDG_CURRENT_DESKTOP"]);
         infoLine = infoLine.replace(/\[mem:(.*?)\]/g, (match, field) => {
             if (field in memInfo) {
                 if (Number.isInteger(memInfo[field]))

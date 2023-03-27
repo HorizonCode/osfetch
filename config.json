@@ -8,6 +8,7 @@
         "{color:magenta} {color:bold}GPU   {color:reset}: [gpu:name]",
         "{color:cyan} {color:bold}MEMORY{color:reset}: [mem:active]/[mem:total]",
         "{color:white} {color:bold}DISK  {color:reset}: [disk:used]/[disk:size]",
+        "{color:grey} {color:bold}DE    {color:reset}: [de]",
         "[colorTest]"
     ]
 }
