@@ -1,0 +1,12 @@
+{
+    "lines": [
+        "",
+        "{color:red} {color:bold}OS {color:reset}: [os:distro]",
+        "{color:green} {color:bold}VER{color:reset}: [os:kernel]",
+        "{color:yellow} {color:bold}UP {color:reset}: [uptime]",
+        "{color:magentaBright} {color:bold}CPU{color:reset}: [cpu]",
+        "{color:cyan} {color:bold}GPU{color:reset}: [gpu:name]",
+        "{color:white} {color:bold}MEM:{color:reset} [mem:active]/[mem:total]",
+        "[colorTest]"
+    ]
+}
