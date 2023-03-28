@@ -6,7 +6,7 @@
         "{color:green} {color:bold}KERNEL{color:reset}: [os:kernel]",
         "{color:yellow} {color:bold}UP    {color:reset}: [uptime]",
         "{color:blue} {color:bold}CPU   {color:reset}: [cpu]",
-        "{color:magenta} {color:bold}GPU   {color:reset}: [gpu:name]",
+        "{color:magenta} {color:bold}GPU   {color:reset}: [gpu:name] [gpu:memoryTotal]",
         "{color:cyan} {color:bold}MEMORY{color:reset}: [mem:active]/[mem:total]",
         "{color:white} {color:bold}DISK  {color:reset}: [disk:used]/[disk:size]",
         "{color:grey} {color:bold}DE    {color:reset}: [de]",
