@@ -1,6 +1,7 @@
 {
     "lines": [
-        "",
+        "{color:blue}[env:USERNAME]{color:reset}@{color:blue}[env:COMPUTERNAME]{color:reset}",
+        "-------------------------",
         "{color:red} {color:bold}OS    {color:reset}: [os:distro]",
         "{color:green} {color:bold}KERNEL{color:reset}: [os:kernel]",
         "{color:yellow} {color:bold}UP    {color:reset}: [uptime]",
