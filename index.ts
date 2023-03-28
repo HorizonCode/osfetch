@@ -11,7 +11,7 @@ import os from 'os';
     const memInfo = await si.mem();
     const diskInfo = await si.fsSize();
 
-    const logoAscii = getLogo("arch");
+    const logoAscii = getLogo(osInfo.logofile);
     const configLinesArray = config.lines;
     const maxLines = Math.max(logoAscii.length, configLinesArray.length);
     for (let index = 0; index < maxLines; index++) {
@@ -25,7 +25,7 @@ import os from 'os';
         });
         infoLine = infoLine.replace(/\[uptime\]/g, secondsHumanReadable(Math.floor(os.uptime())));
         infoLine = infoLine.replace(/\[cpu\]/g, `${cpuInfo.manufacturer} ${cpuInfo.brand} (${cpuInfo.cores}) @ ${cpuInfo.speedMax.toFixed(3)}GHz`);
-        infoLine = infoLine.replace(/\[de\]/g, (process.env as object)["XDG_CURRENT_DESKTOP"]);
+        infoLine = infoLine.replace(/\[de\]/g, (process.env as object)["XDG_CURRENT_DESKTOP"] ? (process.env as object)["XDG_CURRENT_DESKTOP"] : "Aero");
         infoLine = infoLine.replace(/\[mem:(.*?)\]/g, (match, field) => {
             if (field in memInfo) {
                 if (Number.isInteger(memInfo[field]))
