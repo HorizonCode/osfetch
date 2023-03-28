@@ -34,6 +34,12 @@ import os from 'os';
             }
             return match;
         });
+        infoLine = infoLine.replace(/\[env:(.*?)\]/g, (match, field) => {
+          if (process.env[field]) {
+              return process.env[field] as string;
+          }
+          return match;
+      });
         if (diskInfo.length > 0) {
             const bootDisk = diskInfo[0];
             infoLine = infoLine.replace(/\[disk:(.*?)\]/g, (match, field) => {
